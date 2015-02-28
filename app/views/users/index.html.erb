@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Project4</title>
+ <%=stylesheet_link_tag "mystyle.css"%>
+</head>
+<body>
+<%=stylesheet_link_tag "mystyle.css"%>
+
+
+
+<p>The following are all the users. Click on a name to see their photos.</p>
+
+<table cellspacing="0">
+<% User.find_each do |user| %>
+<tr>
+     <td class="left-pad"> 
+     	<p>
+     	<%= link_to user.first_name, {:controller=>"photos" , :action=>"index" , :id=>user.id}%> 
+		</p>
+     </td>
+
+ </tr>
+<% end %>
+</table>
+</body>
+</html>
+

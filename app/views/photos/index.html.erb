@@ -1,0 +1,38 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		  <title>Project4</title>
+		 <%=stylesheet_link_tag "mystyle.css"%>
+	</head>
+	<body>
+		
+	<h1 id="who"class="center jumbotron"><%=User.find(params[:id]).first_name%>'s photos </h1>	
+	<div>
+		<table cellspacing="0" class="table table-bordered">
+			<% User.find(params[:id]).photos.find_each do |photo| %>
+			<tr>
+			    <td id="sep">
+			    	<%= image_tag(photo.file_name) %>
+			    	<p>Generated on: <%=photo.date_time%></p>
+			    	<p><a href='/comments/new/<%= photo.id %>'>New Comment</a></p>
+			    	<%=photo.comments.find_each do |comment| %>
+			    	<tr>
+			    		<td>
+				    		<p>
+				    		<a href=<%="/photos/index/"+comment.user.id.to_s%>> <%=comment.user.first_name%></a> commented on <%=comment.date_time%> :<%=comment.comment%>
+				    		</p>
+			    		</td>
+					</tr>
+
+					<%end%>
+
+			    </td>
+			 </tr>
+			<% end %>
+		</table>
+	</div>
+	</body>
+</html>

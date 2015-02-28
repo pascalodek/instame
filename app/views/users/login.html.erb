@@ -1,0 +1,21 @@
+
+  <title>Project5</title>
+
+ <%=stylesheet_link_tag "mystyle.css"%>
+
+
+<h3>Welcome to PhotoSynthesis</h3>
+
+
+<p><%= flash[:message] %></p>
+<%= form_for(:user, :url => {:action => :post_login}) do |form| %>
+    <%= form.label(:login, "Username:")%>
+    <%= form.text_field(:login) %>
+    <%= form.label(:password, "Password:")%>
+    <%= form.password_field(:password) %>
+    <%= form.submit "Login" , class:"btn btn-lg btn-primary"%>
+<% end %>
+
+<!--<p class="btn btn-lg btn-primary"><a href='/users/new'>Sign Up!</a></p>-->
+<a class="btn btn-link selected" name="Sign Up" href="/users/new">Sign Up</a>
+

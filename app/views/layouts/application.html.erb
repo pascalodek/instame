@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Project5</title>
+<%=stylesheet_link_tag "mystyle.css"%>
+<%= stylesheet_link_tag 'application', media: 'all',
+                                           'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
+<!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
+
+</head>
+<body>
+
+	<!--<div id= "mheader">
+			<p> <strong id="apname">QINNECT </strong>
+
+			<%if session[:id] != nil %>
+				Hi <%= session[:name] %>! <a href="/users/logout"> Logout</a>
+				<a href="/photos/new">New Photo</a>
+				<a href="/users/index">All users</a></p>
+
+			<% end %>
+
+			<%if session[:id] == nil %>
+
+				<p><a href="/users/login">Login</a>
+				<a href="/users/index">All users</a></p>
+
+			<% end %>
+
+	</div>-->
+
+
+	<!--<div class="container container-fluid">
+		<div class="row">
+			<div class="col-ms-12">
+
+			</div>
+		</div><!--row--
+	</div>container-->
+
+	<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "PHOTOSYNTHESIS", '#', id: "logo" %>
+        <nav>
+
+        	<%if session[:id] != nil %>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li id="salute"><a href=<%="/photos/index/"+session[:id].to_s%>>Hi <%= session[:name] %>,</a> </li>
+            <li><a href="/users/logout"> Logout</a></li>
+            <li><a href="/photos/new">New Photo</a></li>
+            <li><a href="/users/index">All users</a></li>
+          </ul>
+
+          <% end %>
+
+          <%if session[:id] == nil %>
+
+          <ul class="nav navbar-nav navbar-right">
+          <li><a href="/users/login">Login</a></li>
+          <li><a href="/users/index">All users</a></li>
+      	  </ul>
+
+          <% end %>
+
+        </nav>
+      </div>
+    </header>
+	<div clss="container">
+		<%= yield %>
+
+	</div>
+
+</body>
+</html>
